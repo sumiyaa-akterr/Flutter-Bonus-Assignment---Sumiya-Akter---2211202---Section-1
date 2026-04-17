@@ -1,68 +1,42 @@
 import 'package:flutter/material.dart';
+import 'ui_page.dart'; // Import your UI page
 
 class LandingPage extends StatelessWidget {
-  
-  // Attribute 
   final String pageName;
 
-  
-  // Constructor
   const LandingPage({super.key, required this.pageName});
 
-  // ---------------------------------------------------------
-
-
-  final double pi = 3.14159; // Constant attribute
-
-  // Method
-  void printPageName() {
-    print('The page name is: $pageName');
-  }
-
-
-  // Build method
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        color: Colors.purple[50],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.task_alt, size: 100, color: Colors.purpleAccent),
+            const SizedBox(height: 20),
+            Text(
+              "Welcome to $pageName",
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const UiPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purpleAccent,
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+              ),
+              child: const Text("View Tasks", style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-
-
-class LandingPageStatefull extends StatefulWidget {
-
-  // Attribute
-  final String pageName;
-
-  // Constructor
-  const LandingPageStatefull({super.key, required this.pageName});
-
-  @override
-  State<LandingPageStatefull> createState() => _LandingPageStatefullState();
-}
-
-
-class _LandingPageStatefullState extends State<LandingPageStatefull> {
-  
-  
-  final double pi = 3.14159; // Constant attribute
-  int counter = 0; // Variable attribute
-
-  // Method
-  void printPageName() {
-    print('The page name is: ${widget.pageName}');
-  }
-
-  // Build method
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-
-
-}
-
